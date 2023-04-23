@@ -1,3 +1,5 @@
+from typing import List
+
 from currency_codes.assets.commodity import get_commodity_currencies
 from currency_codes.assets.crypto import get_crypto_currencies
 from currency_codes.assets.fiat import get_fiat_currencies
@@ -6,7 +8,7 @@ from currency_codes.exceptions import CurrencyNotFoundError
 from currency_codes.models import Currency
 
 
-def get_all_currencies() -> list[Currency]:
+def get_all_currencies() -> List[Currency]:
     fiat = get_fiat_currencies()
     crypto = get_crypto_currencies()
     commodity = get_commodity_currencies()
@@ -55,4 +57,4 @@ def get_currency_by_numeric_code(numeric_code: str) -> Currency:
     raise CurrencyNotFoundError("numeric code", numeric_code)
 
 
-currencies: list[Currency] = get_all_currencies()
+currencies: List[Currency] = get_all_currencies()

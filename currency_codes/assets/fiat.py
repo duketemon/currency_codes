@@ -1,11 +1,13 @@
+from typing import List
+
 from currency_codes.models import Currency
 
 
-def get_fiat_currencies() -> list[Currency]:
+def get_fiat_currencies() -> List[Currency]:
     return _fiat_currencies
 
 
-_fiat_currencies: list[Currency] = [
+_fiat_currencies: List[Currency] = [
     Currency(name="Afghani", code="AFN", numeric_code="971", minor_units=2),
     Currency(name="Euro", code="EUR", numeric_code="978", minor_units=2),
     Currency(name="Lek", code="ALL", numeric_code="008", minor_units=2),

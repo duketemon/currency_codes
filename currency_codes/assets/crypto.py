@@ -1,11 +1,13 @@
+from typing import List
+
 from currency_codes.models import Currency
 
 
-def get_crypto_currencies() -> list[Currency]:
+def get_crypto_currencies() -> List[Currency]:
     return _crypto_currencies
 
 
-_crypto_currencies: list[Currency] = [
+_crypto_currencies: List[Currency] = [
     Currency(name="Bitcoin", code="BTC", numeric_code=None, minor_units=8),
     Currency(name="Ethereum", code="ETH", numeric_code=None, minor_units=18),
     Currency(name="Binance Coin", code="BNB", numeric_code=None, minor_units=18),
