@@ -4,6 +4,12 @@ from currency_codes.models import Currency
 
 
 def get_commodity_currencies() -> List[Currency]:
+    """Provides a list of commodity currencies
+
+    Returns:
+        List of Currency: list of commodity currencies
+    """
+
     return _commodity_currencies
 
 

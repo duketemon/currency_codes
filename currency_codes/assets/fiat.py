@@ -4,6 +4,12 @@ from currency_codes.models import Currency
 
 
 def get_fiat_currencies() -> List[Currency]:
+    """Provides a list of fiat currencies
+
+    Returns:
+        List of Currency: list of fiat currencies
+    """
+
     return _fiat_currencies
 
 

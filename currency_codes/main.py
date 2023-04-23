@@ -9,6 +9,12 @@ from currency_codes.models import Currency
 
 
 def get_all_currencies() -> List[Currency]:
+    """Provides a list of all currencies
+
+    Returns:
+        List of Currency: list of all currencies
+    """
+
     fiat = get_fiat_currencies()
     crypto = get_crypto_currencies()
     commodity = get_commodity_currencies()

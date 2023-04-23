@@ -4,6 +4,12 @@ from currency_codes.models import Currency
 
 
 def get_crypto_currencies() -> List[Currency]:
+    """Provides a list of crypto currencies
+
+    Returns:
+        List of Currency: list of crypto currencies
+    """
+
     return _crypto_currencies
 
 
