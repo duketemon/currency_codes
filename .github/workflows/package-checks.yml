@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -23,15 +22,13 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Poetry
       uses: snok/install-poetry@v1
-      with:
-        virtualenvs-create: true
-        virtualenvs-in-project: true
-        installer-parallel: true
-    - name: checks
+    - name: install deps
       run: |
-        # install deps
         poetry install
-        # style check
-        make style
-        # unit tests
-        make tests
+    - name: Check style
+      run: |
+        poetry run make style
+    - name: Run unit tests
+      run: |
+        poetry run make tests
+  
