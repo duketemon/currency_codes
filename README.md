@@ -16,7 +16,7 @@ Install the package with the following command:
 pip install currency_codes
 ```
 
-## How to use the package?
+## How to use the package
 ### Get a currency info by a currency code
 You can get any currency info using the snippet below
 ```python
@@ -101,3 +101,6 @@ from currency_codes import get_other_currencies, Currency
 
 other_currencies: list[Currency] = get_other_currencies()
 ```
+
+## How to contribute
+Contributions are always welcomed. If you found any mistakes or missing currencies, please raise a PR to make the package more accurate for all of us
