@@ -32,6 +32,6 @@ jobs:
         # install deps
         poetry install
         # style check
-        make check
+        make style
         # unit tests
         make tests
