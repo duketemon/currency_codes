@@ -14,11 +14,11 @@ fmt:
 	black .
 
 style:
-	isort --check --diff .
-	black --check --diff .
-	mypy -p currency_codes
+	python -m isort --check --diff .
+	python -m black --check --diff .
+	python -m mypy -p currency_codes
 
 tests:
-	pytest tests -vv
+	python -m pytest tests -vv
 
 verify: fmt style tests
