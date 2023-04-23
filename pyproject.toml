@@ -5,8 +5,8 @@ description = "All currency codes in one package"
 authors = ["Artem Kuchumov <duketemon@gmail.com>"]
 keywords = ["ISO 4217", "ISO-4217", "Currency Codes", "Currencies", "fiat", "crypto", "commodity"]
 readme = "README.md"
-homepage = "https://github.com/duketemon/currency-codes"
-repository = "https://github.com/duketemon/currency-codes"
+homepage = "https://github.com/duketemon/currency_codes/blob/main/README.md#description"
+repository = "https://github.com/duketemon/currency_codes"
 
 [tool.poetry.dependencies]
 python = "^3.7"

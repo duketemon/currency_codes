@@ -1,11 +1,19 @@
+from typing import List
+
 from currency_codes.models import Currency
 
 
-def get_other_currencies() -> list[Currency]:
+def get_other_currencies() -> List[Currency]:
+    """Provides a list of other currencies
+
+    Returns:
+        List of Currency: list of other currencies
+    """
+
     return _other_currencies
 
 
-_other_currencies: list[Currency] = [
+_other_currencies: List[Currency] = [
     Currency(name="Sucre", code="XSU", numeric_code="994", minor_units=None),
     Currency(name="CFP Franc", code="XPF", numeric_code="953", minor_units=0),
     Currency(name="CFA Franc BEAC", code="XAF", numeric_code="950", minor_units=0),
