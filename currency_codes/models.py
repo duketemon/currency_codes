@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 
-@dataclass(frozen=True, kw_only=True)
+@dataclass(frozen=True)
 class Currency:
     """Currency information
 
