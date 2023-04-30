@@ -9,4 +9,4 @@ def test_get_other_currencies() -> None:
 
     # Then
     assert isinstance(currencies, Iterable)
-    assert len(currencies) == 19
+    assert len(currencies) == 23

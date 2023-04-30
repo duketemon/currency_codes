@@ -14,6 +14,10 @@ def get_other_currencies() -> List[Currency]:
 
 
 _other_currencies: List[Currency] = [
+    Currency(name="Palladium", code="XPD", numeric_code="964", minor_units=None),
+    Currency(name="Platinum", code="XPT", numeric_code="962", minor_units=None),
+    Currency(name="Gold", code="XAU", numeric_code="959", minor_units=None),
+    Currency(name="Silver", code="XAG", numeric_code="961", minor_units=None),
     Currency(name="Sucre", code="XSU", numeric_code="994", minor_units=None),
     Currency(name="CFP Franc", code="XPF", numeric_code="953", minor_units=0),
     Currency(name="CFA Franc BEAC", code="XAF", numeric_code="950", minor_units=0),

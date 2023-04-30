@@ -25,16 +25,11 @@ fiat_test_cases = (
     ("Chilean Peso", "CLP", "152", 0),
 )
 
-commodity_test_cases = (
-    # name, code, numeric_code
-    ("Palladium", "XPD", "964"),
-    ("Platinum", "XPT", "962"),
-    ("Gold", "XAU", "959"),
-    ("Silver", "XAG", "961"),
-)
 
 other_test_cases = (
     # name, code, numeric_code
+    ("Palladium", "XPD", "964", None),
+    ("Silver", "XAG", "961", None),
     ("Uruguay Peso en Unidades Indexadas (UI)", "UYI", "940", 0),
     ("WIR Euro", "CHE", "947", 2),
     ("Unidad de Fomento", "CLF", "990", 4),
@@ -107,22 +102,6 @@ def test_get_currency_by_code_when_currency_is_fiat(name, code, numeric_code, mi
 
 
 @pytest.mark.parametrize(
-    ids=(c[0] for c in commodity_test_cases),
-    argvalues=commodity_test_cases,
-    argnames="name, code, numeric_code",
-)
-def test_get_currency_by_code_when_currency_is_commodity(name, code, numeric_code) -> None:
-    # When
-    currency = get_currency_by_code(code)
-
-    # Then
-    assert currency.name == name
-    assert currency.code == code
-    assert currency.numeric_code == numeric_code
-    assert currency.minor_units is None
-
-
-@pytest.mark.parametrize(
     ids=(c[0] for c in other_test_cases),
     argvalues=other_test_cases,
     argnames="name, code, numeric_code, minor_units",
@@ -137,7 +116,10 @@ def test_get_currency_by_code_when_currency_is_other(
     assert currency.name == name
     assert currency.code == code
     assert currency.numeric_code == numeric_code
-    assert currency.minor_units == minor_units
+    if minor_units is None:
+        assert currency.minor_units is minor_units
+    else:
+        assert currency.minor_units == minor_units
 
 
 def test_get_currency_by_numeric_code_when_currency_is_not_found() -> None:
@@ -171,22 +153,6 @@ def test_get_currency_by_numeric_code_when_currency_is_fiat(
 
 
 @pytest.mark.parametrize(
-    ids=(c[0] for c in commodity_test_cases),
-    argvalues=commodity_test_cases,
-    argnames="name, code, numeric_code",
-)
-def test_get_currency_by_numeric_code_when_currency_is_commodity(name, code, numeric_code) -> None:
-    # When
-    currency = get_currency_by_numeric_code(numeric_code)
-
-    # Then
-    assert currency.name == name
-    assert currency.code == code
-    assert currency.numeric_code == numeric_code
-    assert currency.minor_units is None
-
-
-@pytest.mark.parametrize(
     ids=(c[0] for c in other_test_cases),
     argvalues=other_test_cases,
     argnames="name, code, numeric_code, minor_units",
@@ -201,4 +167,7 @@ def test_get_currency_by_numeric_code_when_currency_is_other(
     assert currency.name == name
     assert currency.code == code
     assert currency.numeric_code == numeric_code
-    assert currency.minor_units == minor_units
+    if minor_units is None:
+        assert currency.minor_units is minor_units
+    else:
+        assert currency.minor_units == minor_units

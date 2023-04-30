@@ -3,8 +3,7 @@ Comprehensive Python package for managing currency codes across different types 
 The package provides currency codes for different types of assets. Such as 
 - fiat (US dollar, UAE Dirham, ...)
 - crypto (Bitcoin, Solana, ...)
-- commodity (Palladium, Gold, ...)
-- others (WIR Franc, CFP Franc, ...) 
+- others (Palladium, Gold, WIR Franc, CFP Franc, ...) 
 
 ## Sources
  - [Coinmarketcap website](https://coinmarketcap.com) for crypto
@@ -84,14 +83,6 @@ If you want to get information only about crypto currencies, you can use `get_cr
 from currency_codes import get_crypto_currencies, Currency
 
 crypto_currencies: list[Currency] = get_crypto_currencies()
-```
-
-### Get the list of commodity currencies
-If you want to get information only about commodity currencies, you can use `get_commodity_currencies` function
-```python
-from currency_codes import get_commodity_currencies, Currency
-
-commodity_currencies: list[Currency] = get_commodity_currencies()
 ```
 
 ### Get the list of other currencies
