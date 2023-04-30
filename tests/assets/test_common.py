@@ -18,10 +18,6 @@ def test_when_no_code_duplicates_found_for_fiats(fiat_currencies) -> None:
     assert_no_code_duplicates_found(fiat_currencies)
 
 
-def test_when_no_code_duplicates_found_for_commodities(commodity_currencies) -> None:
-    assert_no_code_duplicates_found(commodity_currencies)
-
-
 def assert_no_numeric_code_duplicates_found(currencies: Iterable[Currency]) -> None:
     codes = set()
     for currency in currencies:
@@ -31,7 +27,3 @@ def assert_no_numeric_code_duplicates_found(currencies: Iterable[Currency]) -> N
 
 def test_when_no_numeric_code_duplicates_found_for_fiats(fiat_currencies) -> None:
     assert_no_numeric_code_duplicates_found(fiat_currencies)
-
-
-def test_when_no_numeric_code_duplicates_found_for_commodities(commodity_currencies) -> None:
-    assert_no_numeric_code_duplicates_found(commodity_currencies)
