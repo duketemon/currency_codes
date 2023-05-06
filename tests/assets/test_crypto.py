@@ -9,7 +9,7 @@ def test_get_crypto_currencies() -> None:
 
     # Then
     assert isinstance(currencies, Iterable)
-    assert len(currencies) == 89
+    assert len(currencies) == 103
 
 
 def test_when_no_crypto_currencies_have_numeric_code(crypto_currencies) -> None:

@@ -10,29 +10,28 @@ from currency_codes.main import (
 )
 
 crypto_test_cases = (
-    # name, code, minor units
-    ("Solana", "SOL", 9),
-    ("Binance Coin", "BNB", 18),
-    ("Algorand", "ALGO", 6),
-    ("Siacoin", "SC", 24),
+    # name, code, state, minor units
+    ("Solana", "SOL", "active", 8),
+    ("Binance Coin", "BNB", "active", 18),
+    ("Algorand", "ALGO", "active", 6),
 )
 
 
 fiat_test_cases = (
-    # name, code, numeric_code, minor_units
-    ("Euro", "EUR", "978", 2),
-    ("Bahraini Dinar", "BHD", "048", 3),
-    ("Chilean Peso", "CLP", "152", 0),
+    # name, code, numeric_code, state, minor_units
+    ("Euro", "EUR", "978", "active", 2),
+    ("Bahraini Dinar", "BHD", "048", "active", 3),
+    ("Chilean Peso", "CLP", "152", "active", 0),
 )
 
 
 other_test_cases = (
-    # name, code, numeric_code
-    ("Palladium", "XPD", "964", None),
-    ("Silver", "XAG", "961", None),
-    ("Uruguay Peso en Unidades Indexadas (UI)", "UYI", "940", 0),
-    ("WIR Euro", "CHE", "947", 2),
-    ("Unidad de Fomento", "CLF", "990", 4),
+    # name, code, state, numeric_code
+    ("Palladium", "XPD", "964", "active", None),
+    ("Silver", "XAG", "961", "active", None),
+    ("Uruguay Peso en Unidades Indexadas (UI)", "UYI", "940", "active", 0),
+    ("WIR Euro", "CHE", "947", "active", 2),
+    ("Unidad de Fomento", "CLF", "990", "active", 4),
 )
 
 
@@ -42,7 +41,7 @@ def test_get_all_currencies() -> None:
 
     # Then
     assert isinstance(currencies, Iterable)
-    assert len(currencies) == 268
+    assert len(currencies) == 282
 
 
 def test_get_currency_by_code_when_currency_is_not_found() -> None:
@@ -72,15 +71,16 @@ def test_get_currency_by_code_when_currency_is_not_found_because_of_case_sensiti
 @pytest.mark.parametrize(
     ids=(c[0] for c in crypto_test_cases),
     argvalues=crypto_test_cases,
-    argnames="name, code, minor_units",
+    argnames="name, code, state, minor_units",
 )
-def test_get_currency_by_code_when_currency_is_crypto(name, code, minor_units) -> None:
+def test_get_currency_by_code_when_currency_is_crypto(name, code, state, minor_units) -> None:
     # When
     currency = get_currency_by_code(code)
 
     # Then
     assert currency.name == name
     assert currency.code == code
+    assert currency.state == state
     assert currency.minor_units == minor_units
     assert currency.numeric_code is None
 
@@ -88,26 +88,10 @@ def test_get_currency_by_code_when_currency_is_crypto(name, code, minor_units) -
 @pytest.mark.parametrize(
     ids=(c[0] for c in fiat_test_cases),
     argvalues=fiat_test_cases,
-    argnames="name, code, numeric_code, minor_units",
+    argnames="name, code, numeric_code, state, minor_units",
 )
-def test_get_currency_by_code_when_currency_is_fiat(name, code, numeric_code, minor_units) -> None:
-    # When
-    currency = get_currency_by_code(code)
-
-    # Then
-    assert currency.name == name
-    assert currency.code == code
-    assert currency.numeric_code == numeric_code
-    assert currency.minor_units == minor_units
-
-
-@pytest.mark.parametrize(
-    ids=(c[0] for c in other_test_cases),
-    argvalues=other_test_cases,
-    argnames="name, code, numeric_code, minor_units",
-)
-def test_get_currency_by_code_when_currency_is_other(
-    name, code, numeric_code, minor_units
+def test_get_currency_by_code_when_currency_is_fiat(
+    name, code, numeric_code, state, minor_units
 ) -> None:
     # When
     currency = get_currency_by_code(code)
@@ -115,6 +99,26 @@ def test_get_currency_by_code_when_currency_is_other(
     # Then
     assert currency.name == name
     assert currency.code == code
+    assert currency.state == state
+    assert currency.numeric_code == numeric_code
+    assert currency.minor_units == minor_units
+
+
+@pytest.mark.parametrize(
+    ids=(c[0] for c in other_test_cases),
+    argvalues=other_test_cases,
+    argnames="name, code, numeric_code, state, minor_units",
+)
+def test_get_currency_by_code_when_currency_is_other(
+    name, code, numeric_code, state, minor_units
+) -> None:
+    # When
+    currency = get_currency_by_code(code)
+
+    # Then
+    assert currency.name == name
+    assert currency.code == code
+    assert currency.state == state
     assert currency.numeric_code == numeric_code
     if minor_units is None:
         assert currency.minor_units is minor_units
@@ -137,10 +141,10 @@ def test_get_currency_by_numeric_code_when_currency_is_not_found() -> None:
 @pytest.mark.parametrize(
     ids=(c[0] for c in fiat_test_cases),
     argvalues=fiat_test_cases,
-    argnames="name, code, numeric_code, minor_units",
+    argnames="name, code, numeric_code, state, minor_units",
 )
 def test_get_currency_by_numeric_code_when_currency_is_fiat(
-    name, code, numeric_code, minor_units
+    name, code, numeric_code, state, minor_units
 ) -> None:
     # When
     currency = get_currency_by_numeric_code(numeric_code)
@@ -148,6 +152,7 @@ def test_get_currency_by_numeric_code_when_currency_is_fiat(
     # Then
     assert currency.name == name
     assert currency.code == code
+    assert currency.state == state
     assert currency.numeric_code == numeric_code
     assert currency.minor_units == minor_units
 
@@ -155,10 +160,10 @@ def test_get_currency_by_numeric_code_when_currency_is_fiat(
 @pytest.mark.parametrize(
     ids=(c[0] for c in other_test_cases),
     argvalues=other_test_cases,
-    argnames="name, code, numeric_code, minor_units",
+    argnames="name, code, numeric_code, state, minor_units",
 )
 def test_get_currency_by_numeric_code_when_currency_is_other(
-    name, code, numeric_code, minor_units
+    name, code, numeric_code, state, minor_units
 ) -> None:
     # When
     currency = get_currency_by_numeric_code(numeric_code)
@@ -166,6 +171,7 @@ def test_get_currency_by_numeric_code_when_currency_is_other(
     # Then
     assert currency.name == name
     assert currency.code == code
+    assert currency.state == state
     assert currency.numeric_code == numeric_code
     if minor_units is None:
         assert currency.minor_units is minor_units

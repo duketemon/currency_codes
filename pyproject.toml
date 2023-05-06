@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "currency_codes"
-version = "23.04.23"
+version = "23.05.06"
 description = "All currency codes in one package"
 authors = ["Artem Kuchumov <duketemon@gmail.com>"]
 keywords = ["ISO 4217", "ISO-4217", "Currency Codes", "Currencies", "fiat", "crypto", "commodity"]
