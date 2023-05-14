@@ -25,7 +25,8 @@ def get_currency_by_code(code: str, case_sensitive: bool = False) -> Currency:
 
     Args:
         code (str): country code
-        case_sensitive (bool): determines whether filters will be treated as case-sensitive for a given code
+        case_sensitive (bool): determines whether filters will be treated as a case-sensitive
+            for a given currency code
 
     Returns:
         Currency: a corresponding currency
