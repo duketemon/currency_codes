@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "currency_codes"
-version = "23.05.06"
+version = "23.05.14"
 description = "All currency codes in one package"
 authors = ["Artem Kuchumov <duketemon@gmail.com>"]
 keywords = ["ISO 4217", "ISO-4217", "Currency Codes", "Currencies", "fiat", "crypto", "commodity"]
@@ -9,7 +9,7 @@ homepage = "https://github.com/duketemon/currency_codes/blob/main/README.md#desc
 repository = "https://github.com/duketemon/currency_codes"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.7.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.3.1"
@@ -17,6 +17,7 @@ pytest-cov = "^4.0.0"
 black = "^23.3.0"
 isort = "5.10"
 mypy = "^1.2.0"
+pylint = "^2.17.4"
 
 
 [tool.black]
@@ -26,6 +27,10 @@ target-version = ["py311", "py310", "py39", "py38", "py37"]
 
 [tool.isort]
 profile = "black"
+
+
+[tool.pylint.'MESSAGES CONTROL']
+disable = ["missing-module-docstring"]
 
 
 [tool.pytest.ini_options]
