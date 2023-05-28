@@ -10,10 +10,10 @@ from currency_codes.main import (
 )
 
 crypto_test_cases = (
-    # name, code, state, minor units
-    ("Solana", "SOL", "active", 8),
-    ("Binance Coin", "BNB", "active", 18),
-    ("Algorand", "ALGO", "active", 6),
+    # name, code, state, minor units, launched in
+    ("Solana", "SOL", "active", 8, 2020),
+    ("Binance Coin", "BNB", "active", 18, 2017),
+    ("Algorand", "ALGO", "active", 6, 2019),
 )
 
 
@@ -71,9 +71,11 @@ def test_get_currency_by_code_when_currency_is_not_found_because_of_case_sensiti
 @pytest.mark.parametrize(
     ids=(c[0] for c in crypto_test_cases),
     argvalues=crypto_test_cases,
-    argnames="name, code, state, minor_units",
+    argnames="name, code, state, minor_units, launched_in",
 )
-def test_get_currency_by_code_when_currency_is_crypto(name, code, state, minor_units) -> None:
+def test_get_currency_by_code_when_currency_is_crypto(
+    name, code, state, minor_units, launched_in
+) -> None:
     # When
     currency = get_currency_by_code(code)
 
@@ -81,6 +83,7 @@ def test_get_currency_by_code_when_currency_is_crypto(name, code, state, minor_u
     assert currency.name == name
     assert currency.code == code
     assert currency.state == state
+    assert currency.launched_in == launched_in
     assert currency.minor_units == minor_units
     assert currency.numeric_code is None
 
