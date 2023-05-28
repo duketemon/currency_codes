@@ -18,10 +18,10 @@ crypto_test_cases = (
 
 
 fiat_test_cases = (
-    # name, code, numeric_code, state, minor_units
-    ("Euro", "EUR", "978", "active", 2),
-    ("Bahraini Dinar", "BHD", "048", "active", 3),
-    ("Chilean Peso", "CLP", "152", "active", 0),
+    # name, code, numeric_code, state, minor_units, launched in
+    ("Euro", "EUR", "978", "active", 2, 1999),
+    ("Bahraini Dinar", "BHD", "048", "active", 3, 1965),
+    ("Chilean Peso", "CLP", "152", "active", 0, 1925),
 )
 
 
@@ -91,10 +91,10 @@ def test_get_currency_by_code_when_currency_is_crypto(
 @pytest.mark.parametrize(
     ids=(c[0] for c in fiat_test_cases),
     argvalues=fiat_test_cases,
-    argnames="name, code, numeric_code, state, minor_units",
+    argnames="name, code, numeric_code, state, minor_units, launched_in",
 )
 def test_get_currency_by_code_when_currency_is_fiat(
-    name, code, numeric_code, state, minor_units
+    name, code, numeric_code, state, minor_units, launched_in
 ) -> None:
     # When
     currency = get_currency_by_code(code)
@@ -103,6 +103,7 @@ def test_get_currency_by_code_when_currency_is_fiat(
     assert currency.name == name
     assert currency.code == code
     assert currency.state == state
+    assert currency.launched_in == launched_in
     assert currency.numeric_code == numeric_code
     assert currency.minor_units == minor_units
 
@@ -144,10 +145,10 @@ def test_get_currency_by_numeric_code_when_currency_is_not_found() -> None:
 @pytest.mark.parametrize(
     ids=(c[0] for c in fiat_test_cases),
     argvalues=fiat_test_cases,
-    argnames="name, code, numeric_code, state, minor_units",
+    argnames="name, code, numeric_code, state, minor_units, launched_in",
 )
 def test_get_currency_by_numeric_code_when_currency_is_fiat(
-    name, code, numeric_code, state, minor_units
+    name, code, numeric_code, state, minor_units, launched_in
 ) -> None:
     # When
     currency = get_currency_by_numeric_code(numeric_code)
@@ -156,6 +157,7 @@ def test_get_currency_by_numeric_code_when_currency_is_fiat(
     assert currency.name == name
     assert currency.code == code
     assert currency.state == state
+    assert currency.launched_in == launched_in
     assert currency.numeric_code == numeric_code
     assert currency.minor_units == minor_units
 
