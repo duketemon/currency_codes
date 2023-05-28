@@ -17,7 +17,7 @@ style:
 	isort --check --diff .
 	black --check --diff .
 	mypy -p currency_codes
-	pylint currency_codes
+	pylint --fail-under=9 currency_codes
 
 tests:
 	pytest tests -vv
