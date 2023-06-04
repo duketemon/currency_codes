@@ -26,12 +26,11 @@ fiat_test_cases = (
 
 
 other_test_cases = (
-    # name, code, state, numeric_code
-    ("Palladium", "XPD", "964", "active", None),
-    ("Silver", "XAG", "961", "active", None),
-    ("Uruguay Peso en Unidades Indexadas (UI)", "UYI", "940", "active", 0),
-    ("WIR Euro", "CHE", "947", "active", 2),
-    ("Unidad de Fomento", "CLF", "990", "active", 4),
+    # name, code, state, numeric_code, launched in
+    ("Palladium", "XPD", "964", "active", None, None),
+    ("Silver", "XAG", "961", "active", None, None),
+    ("Uruguay Peso en Unidades Indexadas (UI)", "UYI", "940", "active", 0, 1993),
+    ("WIR Euro", "CHE", "947", "active", 2, 2004),
 )
 
 
@@ -41,7 +40,7 @@ def test_get_all_currencies() -> None:
 
     # Then
     assert isinstance(currencies, Iterable)
-    assert len(currencies) == 282
+    assert len(currencies) == 277
 
 
 def test_get_currency_by_code_when_currency_is_not_found() -> None:
@@ -111,10 +110,10 @@ def test_get_currency_by_code_when_currency_is_fiat(
 @pytest.mark.parametrize(
     ids=(c[0] for c in other_test_cases),
     argvalues=other_test_cases,
-    argnames="name, code, numeric_code, state, minor_units",
+    argnames="name, code, numeric_code, state, minor_units, launched_in",
 )
 def test_get_currency_by_code_when_currency_is_other(
-    name, code, numeric_code, state, minor_units
+    name, code, numeric_code, state, minor_units, launched_in
 ) -> None:
     # When
     currency = get_currency_by_code(code)
@@ -123,6 +122,7 @@ def test_get_currency_by_code_when_currency_is_other(
     assert currency.name == name
     assert currency.code == code
     assert currency.state == state
+    assert currency.launched_in == launched_in
     assert currency.numeric_code == numeric_code
     if minor_units is None:
         assert currency.minor_units is minor_units
@@ -165,10 +165,10 @@ def test_get_currency_by_numeric_code_when_currency_is_fiat(
 @pytest.mark.parametrize(
     ids=(c[0] for c in other_test_cases),
     argvalues=other_test_cases,
-    argnames="name, code, numeric_code, state, minor_units",
+    argnames="name, code, numeric_code, state, minor_units, launched_in",
 )
 def test_get_currency_by_numeric_code_when_currency_is_other(
-    name, code, numeric_code, state, minor_units
+    name, code, numeric_code, state, minor_units, launched_in
 ) -> None:
     # When
     currency = get_currency_by_numeric_code(numeric_code)
@@ -177,6 +177,7 @@ def test_get_currency_by_numeric_code_when_currency_is_other(
     assert currency.name == name
     assert currency.code == code
     assert currency.state == state
+    assert currency.launched_in == launched_in
     assert currency.numeric_code == numeric_code
     if minor_units is None:
         assert currency.minor_units is minor_units
