@@ -40,7 +40,7 @@ def test_get_all_currencies() -> None:
 
     # Then
     assert isinstance(currencies, Iterable)
-    assert len(currencies) == 277
+    assert len(currencies) == 280
 
 
 def test_get_currency_by_code_when_currency_is_not_found() -> None:

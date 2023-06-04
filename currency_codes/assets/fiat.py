@@ -183,11 +183,19 @@ _fiat_currencies: List[Currency] = [
         numeric_code="064",
     ),
     Currency(
+        name="Bolivian peso",
+        code="BOP",
+        minor_units=2,
+        state="inactive",
+        launched_in=1963,
+        numeric_code=None,
+    ),
+    Currency(
         name="Boliviano",
         code="BOB",
         minor_units=2,
         state="active",
-        launched_in=1863,
+        launched_in=1986,
         numeric_code="068",
     ),
     Currency(
@@ -1261,5 +1269,21 @@ _fiat_currencies: List[Currency] = [
         state="active",
         launched_in=1995,
         numeric_code="977",
+    ),
+    Currency(
+        name="CFP Franc",
+        code="XPF",
+        state="active",
+        numeric_code="953",
+        minor_units=0,
+        launched_in=1945,
+    ),
+    Currency(
+        name="CFA Franc BEAC",
+        code="XAF",
+        state="active",
+        numeric_code="950",
+        minor_units=0,
+        launched_in=1945,
     ),
 ]
