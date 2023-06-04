@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "currency_codes"
-version = "23.05.14"
-description = "All currency codes in one package"
+version = "23.06.04"
+description = "Comprehensive Python package for managing currency codes across different types of assets"
 authors = ["Artem Kuchumov <duketemon@gmail.com>"]
 keywords = ["ISO 4217", "ISO-4217", "Currency Codes", "Currencies", "fiat", "crypto", "commodity"]
 readme = "README.md"

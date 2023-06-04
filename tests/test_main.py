@@ -31,6 +31,7 @@ other_test_cases = (
     ("Silver", "XAG", "961", "active", None, None),
     ("Uruguay Peso en Unidades Indexadas (UI)", "UYI", "940", "active", 0, 1993),
     ("WIR Euro", "CHE", "947", "active", 2, 2004),
+    ("Unidad de Fomento", "CLF", "990", "active", 4, 1967),
 )
 
 
@@ -40,7 +41,7 @@ def test_get_all_currencies() -> None:
 
     # Then
     assert isinstance(currencies, Iterable)
-    assert len(currencies) == 280
+    assert len(currencies) == 283
 
 
 def test_get_currency_by_code_when_currency_is_not_found() -> None:
