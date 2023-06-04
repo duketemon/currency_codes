@@ -9,4 +9,4 @@ def test_get_fiat_currencies_when_function_returns_all_currencies() -> None:
 
     # Then
     assert isinstance(currencies, Iterable)
-    assert len(currencies) == 156
+    assert len(currencies) == 159
