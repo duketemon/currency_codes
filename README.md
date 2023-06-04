@@ -2,12 +2,12 @@
 Comprehensive Python package for managing currency codes across different types of assets. Having all the currency codes in one package can simplify the development process for applications that involve multiple currencies and assets. This package could also help to ensure consistency and accuracy in managing currency codes across different parts of an application  
 The package provides currency codes for different types of assets. Such as 
 - fiat (US dollar, UAE Dirham, ...)
-- crypto (Bitcoin, Solana, ...)
-- others (Palladium, Gold, WIR Franc, CFP Franc, ...) 
+- crypto (Bitcoin, Solana, Cardano, ...)
+- others (Palladium, Gold, Unidad Previsional, ...) 
 
 ## Sources
- - [Coinmarketcap website](https://coinmarketcap.com) for crypto
- - [ISO's website](https://www.iso.org/iso-4217-currency-codes.html) for rest
+- [Coinmarketcap website](https://coinmarketcap.com) for crypto
+- [ISO's website](https://www.iso.org/iso-4217-currency-codes.html) for rest
 
 ## Installation
 Install the package with the following command:

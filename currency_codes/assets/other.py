@@ -151,4 +151,28 @@ _other_currencies: List[Currency] = [
         minor_units=0,
         launched_in=1993,
     ),
+    Currency(
+        name="MVDOL",
+        code="BOV",
+        state="active",
+        minor_units=2,
+        numeric_code="984",
+        launched_in=1993,
+    ),
+    Currency(
+        name="Unidad de Fomento",
+        code="CLF",
+        state="active",
+        minor_units=4,
+        numeric_code="990",
+        launched_in=1967,
+    ),
+    Currency(
+        name="Unidad de Valor Real",
+        code="COU",
+        state="active",
+        minor_units=2,
+        numeric_code="970",
+        launched_in=1994,
+    ),
 ]
