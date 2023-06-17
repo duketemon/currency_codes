@@ -2,6 +2,7 @@
 
 init:
 	poetry install
+	pre-commit install
 
 upd:
 	poetry lock
@@ -22,4 +23,7 @@ style:
 tests:
 	pytest tests -vv
 
-verify: fmt style tests
+pre-commit-check:
+	pre-commit run
+
+verify: fmt style tests pre-commit-check
